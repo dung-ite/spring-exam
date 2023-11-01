@@ -1,0 +1,270 @@
+﻿# A5:ER FORMAT:17
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.18.4 Copyright © 1997 - 2023 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=springexam
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=14
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=7
+RDBMSTypeName=PostgreSQL
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=NEW_ENTITY1
+LName=PRODUCT
+Comment=
+TableOption=
+Page=MAIN
+Left=1100
+Top=400
+Field="PRODUCT_ID","PRODUCT_ID","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="PRODUCT_NAME","PRODUCT_NAME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="PRODUCT_DISCOUNT","PRODUCT_DISCOUNT","","NOT NULL",,"","",$FFFFFFFF,""
+Field="PRODUCT_EAN","PRODUCT_EAN","","NOT NULL",,"","",$FFFFFFFF,""
+Field="CATEGORY_ID","CATEGORY_ID","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224319
+Position="MAIN",1100,400,910,651
+ZOrder=1
+
+[Entity]
+PName=CATEGORY
+LName=CATEGORY
+Comment=
+TableOption=
+Page=MAIN
+Left=100
+Top=550
+Field="CATEGORY_ID","CATEGORY_ID","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="CATEGORY_NAME","CATEGORY_NAME","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101221318
+Position="MAIN",100,550,640,381
+ZOrder=2
+
+[Entity]
+PName=ORDER_HEADER
+LName=ORDER_HEADER
+Comment=
+TableOption=
+Page=MAIN
+Left=2850
+Top=200
+Field="ORDER_NO","ORDER_NO","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="PRODUCT_ID","PRODUCT_ID","","NOT NULL",,"","",$FFFFFFFF,""
+Field="ORDER_DETAIL_NO","ORDER_DETAIL_NO","","NOT NULL",,"","",$FFFFFFFF,""
+Field="ITEM_ID","ITEM_ID","","NOT NULL",,"","",$FFFFFFFF,""
+Field="ITEM_NUMBER","ITEM_NUMBER","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224519
+Position="MAIN",2850,200,1037,389
+ZOrder=4
+
+[Entity]
+PName=ORDER_DETAIL
+LName=ORDER_DETAIL
+Comment=
+TableOption=
+Page=MAIN
+Left=2850
+Top=850
+Field="ORDER_NO","ORDER_NO","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="ORDER_DATETIME","ORDER_DATETIME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="MEMBER_ID","MEMBER_ID","",,,"","",$FFFFFFFF,""
+Field="PAYMENT_TYPE","PAYMENT_TYPE","","NOT NULL",,"","",$FFFFFFFF,""
+Field="MEMBER_CARD_ID","MEMBER_CARD_ID","",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101222619
+Position="MAIN",2850,850,1115,635
+ZOrder=5
+
+[Entity]
+PName=PAYMENT
+LName=PAYMEMT
+Comment=
+TableOption=
+Page=MAIN
+Left=2550
+Top=1850
+Field="MEMBER_ID","MEMBER_ID","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="MEMBER_CARD_ID","MEMBER_CARD_ID","","NOT NULL",1,"","",$FFFFFFFF,""
+Field="CARD_COMPANY_ID","CARD_COMPANY_ID","","NOT NULL",,"","",$FFFFFFFF,""
+Field="CARD_NUMBER","CARD_NUMBER","","NOT NULL",,"","",$FFFFFFFF,""
+Field="EXPIRE_YEAR","EXPIRE_YEAR","","NOT NULL",,"","",$FFFFFFFF,""
+Field="EXPIRE_MONTH","EXPIRE_MONTH","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101222859
+Position="MAIN",2550,1850,1111,423
+ZOrder=6
+
+[Entity]
+PName=MEMBER
+LName=MEMBER
+Comment=
+TableOption=
+Page=MAIN
+Left=1250
+Top=1800
+Field="MEMBER_ID","MEMBER_ID","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="PASSWORD","PASSWORD","","NOT NULL",,"","",$FFFFFFFF,""
+Field="LAST_NAME","LAST_NAME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="FIRST_NAME","FIRST_NAME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="POST_CODE","POST_CODE","","NOT NULL",,"","",$FFFFFFFF,""
+Field="ADDRESS","ADDRESS","","NOT NULL",,"","",$FFFFFFFF,""
+Field="BIRTHDAY","BIRTHDAY","","NOT NULL",,"","",$FFFFFFFF,""
+Field="TEL_NO","TEL_NO","","NOT NULL",,"","",$FFFFFFFF,""
+Field="MAIL_ADDRESS","MAIL_ADDRESS","","NOT NULL",,"","",$FFFFFFFF,""
+Field="REGIST_DATETIME","REGIST_DATETIME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="MEMBER_TYPE","MEMBER_TYPE","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101223722
+Position="MAIN",1250,1800,961,714
+ZOrder=7
+
+[Entity]
+PName=CARD
+LName=CARD
+Comment=
+TableOption=
+Page=MAIN
+Left=2850
+Top=2500
+Field="CARD_COMPANY_ID","CARD_COMPANY_ID","","NOT NULL",0,"","",$FFFFFFFF,""
+Field="CARD_COMPANY_NAME","CARD_COMPANY_NAME","","NOT NULL",,"","",$FFFFFFFF,""
+Field="PREFECTURE","PREFECTURE","","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101223907
+Position="MAIN",2850,2500,1048,270
+ZOrder=8
+
+[Relation]
+Entity1=CATEGORY
+Entity2=NEW_ENTITY1
+RelationType1=1
+RelationType2=3
+Fields1=CATEGORY_ID
+Fields2=CATEGORY_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1298,8702,1325,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101224210
+LineMode=0
+Bar1=130
+Bar2=870
+Bar3=132
+TermPos1=R
+TermPos2=R
+ZOrder=9
+
+[Relation]
+Entity1=NEW_ENTITY1
+Entity2=ORDER_HEADER
+RelationType1=2
+RelationType2=3
+Fields1=PRODUCT_ID
+Fields2=PRODUCT_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,974,9026,1296,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101224535
+LineMode=0
+Bar1=97
+Bar2=903
+Bar3=130
+TermPos1=R
+TermPos2=R
+ZOrder=10
+
+[Relation]
+Entity1=ORDER_DETAIL
+Entity2=ORDER_HEADER
+RelationType1=2
+RelationType2=4
+Fields1=ORDER_NO
+Fields2=ORDER_NO
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,4082,5918,3884,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101224715
+LineMode=0
+Bar1=408
+Bar2=592
+Bar3=388
+TermPos1=R
+TermPos2=R
+ZOrder=11
+
+[Relation]
+Entity1=PAYMENT
+Entity2=ORDER_DETAIL
+RelationType1=1
+RelationType2=3
+Fields1=MEMBER_ID,MEMBER_CARD_ID
+Fields2=MEMBER_ID,MEMBER_CARD_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,5000,5000,5000,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101225544
+LineMode=0
+Bar1=500
+Bar2=500
+Bar3=500
+TermPos1=R
+TermPos2=R
+ZOrder=12
