@@ -1,0 +1,377 @@
+﻿# A5:ER FORMAT:17
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.18.3 Copyright © 1997 - 2023 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=SkincareShop
+Author=HoaLTP
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",6,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=6
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=7
+RDBMSTypeName=PostgreSQL
+CommonField="更新日","UPDATE_AT","timestamp(6) without time zone",,,"","",$FFFFFFFF
+CommonField="作成日","CREATE_AT","timestamp(6) without time zone",,,"","",$FFFFFFFF
+CommonField="商品ID","PRODUCT_ID","varchar(30)",,,"","",$FFFFFFFF
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=MEMBER
+LName=会員
+Comment=
+TableOption=
+Page=MAIN
+Left=1150
+Top=800
+Field="会員ID","MEMBER_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="パースワード","PASSWORD","varchar(64)","NOT NULL",,"","",$FFFFFFFF,""
+Field="姓","LAST_NAME","varchar(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="名","FIRST_NAME","varchar(20)","NOT NULL",,"","",$FFFFFFFF,""
+Field="郵便番号","POST_CODE","varchar(8)","NOT NULL",,"","",$FFFFFFFF,""
+Field="住所","ADDRESS","varchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="生年月日","BIRTHDAY","date",,,"","",$FFFFFFFF,""
+Field="電話番号","TEL_NO","varchar(13)","NOT NULL",,"","",$FFFFFFFF,""
+Field="イメールアドレス","EMAIL_ADDRESS","varchar(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="登録日時","REGIS_DATETIME","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101220421
+Position="MAIN",1150,800,484,265
+ZOrder=1
+
+[Entity]
+PName=PRODUCT
+LName=商品
+Comment=
+TableOption=
+Page=MAIN
+Left=1550
+Top=350
+Field="商品ID","PRODUCT_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="商品名","PRODUCT_NAME","varchar(30)","NOT NULL",,"","",$FFFFFFFF,""
+Field="価格","PRICE","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="チャラクターID","CHARACTER_ID","integer",,,"","",$FFFFFFFF,""
+Field="カテゴリID","CATEGORY_ID","varchar(5)",,,"","",$FFFFFFFF,""
+Field="割引金額","DISCOUNT","integer",,,"","",$FFFFFFFF,""
+Field="発売日","ON_SALE_DATE","DATE",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224606
+Position="MAIN",1550,350,489,235
+ZOrder=2
+
+[Entity]
+PName=CATEGORY
+LName=カテゴリ
+Comment=
+TableOption=
+Page=MAIN
+Left=1000
+Top=300
+Field="カテゴリID","CATEGORY_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="カテゴリ名","CATEGORY_NAME","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101220356
+Position="MAIN",1000,300
+ZOrder=3
+
+[Entity]
+PName=ORDER_DETAIL
+LName=注文明細
+Comment=
+TableOption=
+Page=MAIN
+Left=2150
+Top=400
+Field="注文明細番号","ORDER_DETAIL_NO","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="注文番号","ORDER_NO","varchar(8)","NOT NULL",,"","",$FFFFFFFF,""
+Field="商品ID","PRODUCT_ID","varchar(8)","NOT NULL",,"","",$FFFFFFFF,""
+Field="数量","ITEM_NO","integer","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101222609
+Position="MAIN",2150,400,437,102
+ZOrder=4
+
+[Entity]
+PName=ORDER_HEADER
+LName=注文
+Comment=
+TableOption=
+Page=MAIN
+Left=2050
+Top=650
+Field="注文番号","ORDER_NO","varchar(8)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="注文日時","ORDER_DATETIME","timestamp","NOT NULL",,"","",$FFFFFFFF,""
+Field="会員ID","MEMBER_ID","varchar(8)",,,"","",$FFFFFFFF,""
+Field="支払い方法","PAYMENT_TYPE","char(2)","NOT NULL",,"","クレジットカード、着払い、口座振替",$FFFFFFFF,""
+Field="会員クレジットカードID","MEMBER_CARD_ID","integer",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101223657
+Position="MAIN",2050,650,580,140
+ZOrder=6
+
+[Entity]
+PName=MEMBER_CARD
+LName=会員クレジットカード
+Comment=
+TableOption=
+Page=MAIN
+Left=2050
+Top=1050
+Field="会員ID","MEMBER_ID","varchar(8)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="会員クレジットカードID","MEMBER_CARD_ID","integer","NOT NULL",1,"","",$FFFFFFFF,""
+Field="クレジットカード会社ID","CARD_COMPANY_ID","varchar(5)","NOT NULL",,"","",$FFFFFFFF,""
+Field="クレジットカード番号","CARD_NUMBER","char(19)","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効期限年","EXPIRE_YEAR","varchar(2)","NOT NULL",,"","",$FFFFFFFF,""
+Field="有効期限月","EXPIRE_MONTH","varchar(2)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101220923
+Position="MAIN",2050,1050
+ZOrder=7
+
+[Entity]
+PName=CARD_COMPANY
+LName=クレジットカード会社
+Comment=
+TableOption=
+Page=MAIN
+Left=2050
+Top=1350
+Field="クレジットカード会社ID","CARD_COMPANY_ID","varchar(5)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="クレジットカード会社名","CARD_COMPANY_NAME","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+Field="所在地（頭道府県）","PREFECTURE","varchar(30)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101220933
+Position="MAIN",2050,1350
+ZOrder=8
+
+[Relation]
+Entity1=CATEGORY
+Entity2=PRODUCT
+RelationType1=1
+RelationType2=3
+Fields1=CATEGORY_ID
+Fields2=CATEGORY_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2726,4717,2674,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20230930112644
+LineMode=0
+Bar1=273
+Bar2=472
+Bar3=267
+TermPos1=R
+TermPos2=R
+ZOrder=9
+
+[Relation]
+Entity1=PRODUCT
+Entity2=ORDER_DETAIL
+RelationType1=2
+RelationType2=3
+Fields1=PRODUCT_ID
+Fields2=PRODUCT_ID
+Cardinarity1=1
+Cardinarity2=
+Position="MAIN",0,2654,7346,4033,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20230930113039
+LineMode=0
+Bar1=265
+Bar2=735
+Bar3=403
+TermPos1=R
+TermPos2=R
+ZOrder=10
+
+[Relation]
+Entity1=MEMBER
+Entity2=ORDER_HEADER
+RelationType1=2
+RelationType2=3
+Fields1=MEMBER_ID
+Fields2=MEMBER_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,5000,5000,5000,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20230930111755
+LineMode=0
+Bar1=500
+Bar2=500
+Bar3=500
+TermPos1=R
+TermPos2=R
+ZOrder=11
+
+[Relation]
+Entity1=ORDER_HEADER
+Entity2=ORDER_DETAIL
+RelationType1=2
+RelationType2=4
+Fields1=ORDER_NO
+Fields2=ORDER_NO
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,8391,1609,8482,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101221101
+LineMode=0
+Bar1=839
+Bar2=161
+Bar3=848
+TermPos1=R
+TermPos2=R
+ZOrder=12
+
+[Relation]
+Entity1=MEMBER
+Entity2=MEMBER_CARD
+RelationType1=2
+RelationType2=3
+Fields1=MEMBER_ID
+Fields2=MEMBER_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,5590,5007,4767,R,R,""
+Dependence=1
+Caption=
+PName=
+ModifiedDateTime=20230930111859
+LineMode=0
+Bar1=559
+Bar2=501
+Bar3=477
+TermPos1=R
+TermPos2=R
+ZOrder=13
+
+[Relation]
+Entity1=CARD_COMPANY
+Entity2=MEMBER_CARD
+RelationType1=2
+RelationType2=3
+Fields1=CARD_COMPANY_ID
+Fields2=CARD_COMPANY_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,8598,1402,8505,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=860
+Bar2=140
+Bar3=850
+TermPos1=R
+TermPos2=R
+ZOrder=14
+
+[Relation]
+Entity1=MEMBER_CARD
+Entity2=ORDER_HEADER
+RelationType1=1
+RelationType2=3
+Fields1=MEMBER_ID,MEMBER_CARD_ID
+Fields2=MEMBER_ID,MEMBER_CARD_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,9500,500,9454,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20230930113133
+LineMode=0
+Bar1=950
+Bar2=50
+Bar3=945
+TermPos1=R
+TermPos2=R
+ZOrder=19
+
+[Entity]
+PName=CHARACTER
+LName=キャラクター
+Comment=
+TableOption=
+Page=MAIN
+Left=1000
+Top=600
+Field="キャラクターID","CHARACTER_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="キャラクター名","CHARACTER_NAME","varchar(100)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101222150
+Position="MAIN",1000,600
+ZOrder=23
+
+[Relation]
+Entity1=CHARACTER
+Entity2=PRODUCT
+RelationType1=4
+RelationType2=3
+Fields1=CHARACTER_ID
+Fields2=CHARACTER_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2509,7491,3357,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231101222505
+LineMode=0
+Bar1=251
+Bar2=749
+Bar3=336
+TermPos1=R
+TermPos2=R
+ZOrder=26
