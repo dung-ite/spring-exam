@@ -1,0 +1,412 @@
+﻿# A5:ER FORMAT:17
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.18.3 Copyright © 1997 - 2023 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=demo1
+Author=hungTakumi
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",6,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=6
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=10
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSTypeName=Oracle Database
+CommonField="created_at","created_at","timestamp(6) without time zone",,,"","",$FFFFFFFF
+CommonField="update_at","update_at","timestamp(6) without time zone",,,"","",$FFFFFFFF
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=1
+
+[Entity]
+PName=PRODUCT
+LName=商品
+Comment=
+TableOption=
+Page=MAIN
+Left=2350
+Top=100
+Field="商品_ID","PRODUCT_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="商品名","PRODUCT_NAME","character varying(60)","NOT NULL",,"","",$FFFFFFFF,""
+Field="原価","COST_PRICE","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="売価","PRICE","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="カテゴリ_ID","CATEGORY_ID","serial",,,"","",$FFFFFFFF,""
+Field="仕込み先","SUPPLIER","character varying(30)","NOT NULL",,"","",$FFFFFFFF,""
+Field="寸法","PRODUCT_SIZE","character varying(30)",,,"","",$FFFFFFFF,""
+Field="重量","WEIGHT","integer",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224630
+Position="MAIN",2350,100,811,417
+ZOrder=3
+
+[Entity]
+PName=ORDER
+LName=注文
+Comment=
+TableOption=
+Page=MAIN
+Left=1700
+Top=800
+Field="注文ID","ORDER_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="顧客ID","CLIENT_ID","serial","NOT NULL",,"","",$FFFFFFFF,""
+Field="支払い予定額","SCHEDULE_PAYMENT_AMOUNT","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="ポイント利用額","SPOINT_USAGE_AMOUNT","integer",,,"","",$FFFFFFFF,""
+Field="支払い額","PAYMENT_AMOUNT","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="決算方法","PAYMENT_TYPE","serial","NOT NULL",,"","",$FFFFFFFF,""
+Field="配送方法_ID","SHIPPING_METHOD_ID","serial","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101230206
+Position="MAIN",1700,800,1003,394
+ZOrder=4
+
+[Entity]
+PName=ORDER_DETAIL
+LName=注文詳細
+Comment=
+TableOption=
+Page=MAIN
+Left=2900
+Top=700
+Field="注文ID","ORDER_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="商品ID","PRODUCT_ID","serial","NOT NULL",,"","",$FFFFFFFF,""
+Field="個数","QUANTITY","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="単価","UNIT_PRICE","integer",,,"","",$FFFFFFFF,""
+Field="小計（税抜）","SUBTOTAL","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="消費税","CONSUMPTION_TAX","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="小計（税込）","TOTAL","integer","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224952
+Position="MAIN",2900,700,785,368
+ZOrder=5
+
+[Entity]
+PName=CLIENT
+LName=顧客
+Comment=
+TableOption=
+Page=MAIN
+Left=600
+Top=750
+Field="顧客ID","CLIENT_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="氏名","FULLNAME","character varying(40)","NOT NULL",,"","",$FFFFFFFF,""
+Field="郵便番号","POST_CODE","character varying(8)","NOT NULL",,"","",$FFFFFFFF,""
+Field="住所","ADDRESS","character varying(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="電話番号","TEL_NO","character varying(13)","NOT NULL",,"","",$FFFFFFFF,""
+Field="メールアドレス","MAIL_ADDRESS","character varying(200)","NOT NULL",,"","",$FFFFFFFF,""
+Field="登録日時","REGIST_TIME","datetime","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101230855
+Position="MAIN",600,750,849,345
+ZOrder=6
+
+[Entity]
+PName=CATEGORY
+LName=カテゴリ
+Comment=
+TableOption=
+Page=MAIN
+Left=1200
+Top=450
+Field="カテゴリID","CATEGORY_ID","integer","NOT NULL",0,"","",$FFFFFFFF,""
+Field="カテゴリ名","CATEGORY_NAME","character varying(30)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224710
+Position="MAIN",1200,450,764,140
+ZOrder=7
+
+[Entity]
+PName=STOCK_DETAIL
+LName=在庫詳細
+Comment=
+TableOption=
+Page=MAIN
+Left=1150
+Top=150
+Field="商品ID","PRODUCT_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="在庫数","STOCK_QUANTITY","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="在庫ステータス","STOCK_STATUS","character varying(30)",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101224649
+Position="MAIN",1150,150,876,167
+ZOrder=8
+
+[Entity]
+PName=SHIPPING＿METHOD
+LName=配送方法
+Comment=
+TableOption=
+Page=MAIN
+Left=2900
+Top=1200
+Field="配送方法_ID","SHIPPING_METHOD_ID","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="配送方法名","SHIPPING_METHOD_NAME","character varying(30)","NOT NULL",,"","",$FFFFFFFF,""
+Field="送料","POSTAGE","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="発送までのリードタイム","LEAD_TIME_UNTIL_SHIPPING","integer",,,"","",$FFFFFFFF,""
+Field="到着までのリードタイム","LEAD_TIME_UNTIL_ARRIVAL","integer","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101230306
+Position="MAIN",2900,1200,1005,277
+ZOrder=9
+
+[Entity]
+PName=PAYMENT_TYPE
+LName=決算方法
+Comment=
+TableOption=
+Page=MAIN
+Left=600
+Top=1250
+Field="決算方法ID","PAYMENT_METHOD","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="決算方法名","PAYMENT_METHOD_NAME","character varying(30)","NOT NULL",,"","",$FFFFFFFF,""
+Field="顧客ID","CLIENT_ID","serial","NOT NULL",,"","",$FFFFFFFF,""
+Field="顧客クレジットカード","CLIENT_CARD_ID","integer",,,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20231101230244
+Position="MAIN",600,1250,923,243
+ZOrder=10
+
+[Relation]
+Entity1=ORDER_DETAIL
+Entity2=ORDER
+RelationType1=4
+RelationType2=2
+Fields1=ORDER_ID
+Fields2=ORDER_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,707,6486,816,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001225248
+LineMode=0
+Bar1=71
+Bar2=649
+Bar3=82
+TermPos1=R
+TermPos2=R
+ZOrder=11
+
+[Relation]
+Entity1=ORDER_DETAIL
+Entity2=PRODUCT
+RelationType1=3
+RelationType2=2
+Fields1=ORDER_ID
+Fields2=PRODUCT_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",5,1742,2031,625,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001225757
+LineMode=5
+Bar1=174
+Bar2=203
+Bar3=62
+TermPos1=R
+TermPos2=R
+ZOrder=12
+
+[Relation]
+Entity1=ORDER
+Entity2=PAYMENT_TYPE
+RelationType1=3
+RelationType2=2
+Fields1=PAYMENT_TYPE
+Fields2=PAYMENT_METHOD
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,6073,5092,1171,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001230250
+LineMode=0
+Bar1=607
+Bar2=509
+Bar3=117
+TermPos1=R
+TermPos2=R
+ZOrder=13
+
+[Relation]
+Entity1=SHIPPING＿METHOD
+Entity2=ORDER
+RelationType1=2
+RelationType2=3
+Fields1=SHIPPING_METHOD_ID
+Fields2=SHIPPING_METHOD_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,846,6486,7148,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001230511
+LineMode=0
+Bar1=85
+Bar2=649
+Bar3=715
+TermPos1=R
+TermPos2=R
+ZOrder=14
+
+[Relation]
+Entity1=CLIENT
+Entity2=ORDER
+RelationType1=2
+RelationType2=3
+Fields1=CLIENT_ID
+Fields2=CLIENT_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,839,6486,1805,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001230700
+LineMode=0
+Bar1=84
+Bar2=649
+Bar3=180
+TermPos1=R
+TermPos2=R
+ZOrder=15
+
+[Relation]
+Entity1=STOCK_DETAIL
+Entity2=PRODUCT
+RelationType1=2
+RelationType2=2
+Fields1=PRODUCT_ID
+Fields2=PRODUCT_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1665,5231,843,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001230902
+LineMode=0
+Bar1=166
+Bar2=523
+Bar3=84
+TermPos1=R
+TermPos2=R
+ZOrder=16
+
+[Relation]
+Entity1=CATEGORY
+Entity2=PRODUCT
+RelationType1=1
+RelationType2=3
+Fields1=CATEGORY_ID
+Fields2=CATEGORY_ID
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,1451,5851,4764,R,R,""
+Dependence=0
+Caption=
+PName=
+ModifiedDateTime=20231001231040
+LineMode=0
+Bar1=145
+Bar2=585
+Bar3=476
+TermPos1=R
+TermPos2=R
+ZOrder=18
+
+[Line]
+Page=Main
+Left=1811
+Top=1392
+ZOrder=20
+Width=0
+Height=0
+
+[Line]
+Page=Main
+Left=3050
+Top=1308
+ZOrder=21
+Width=0
+Height=0
+
+[Relation]
+Entity1=PAYMENT_TYPE
+Entity2=CLIENT
+RelationType1=1
+RelationType2=3
+Fields1=PAYMENT_METHOD
+Fields2=
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,2008,8082,0,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=201
+Bar2=808
+Bar3=0
+TermPos1=R
+TermPos2=R
+ZOrder=22
+
+[Comment]
+Comment=Phần tt với point sẽ được xử lý ở giai đoạn tiếp theo
+FontName=Tahoma
+FontBold=0
+FontItalic=0
+FontUnderline=0
+FontSize=9
+FontColor=$000000
+LineColor=$000000
+BkColor=$F0CAA6
+Page=Main
+Left=2062
+Top=1363
+ZOrder=23
+Width=519
+Height=148
